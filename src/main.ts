@@ -1,5 +1,16 @@
-import express from 'express';
 
-const app = express()
+import { App } from './app';
+import { PrismaService } from './database/prisma.service';
+import { UserController } from './user/user.controller';
 
-app.listen(3000)
+async function bootstrap() {
+  const prismaService = new PrismaService()
+  const userController = new UserController(prismaService)
+
+  const app = new App(prismaService, userController)
+  
+  await app.init();
+}
+
+
+bootstrap();

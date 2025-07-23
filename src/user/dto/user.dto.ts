@@ -1,0 +1,6 @@
+export interface UserDTO {
+  firstName: string;
+  lastName: string;
+  password: string;
+  email: string;
+}

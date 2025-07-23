@@ -5,11 +5,20 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:3000
+    develop:
+      watch:
+        - path: package.json
+          action: rebuild
+
+        - action: sync
+          path: ./src
+          target: /usr/src/app/src
+          ignore:
+          - node_modules/
+          
     depends_on:
       postgres:
         condition: service_healthy
-    volumes:
-      - ./src:/usr/src/app/src
     networks:
       - prisma-network
     env_file:

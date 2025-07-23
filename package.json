@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "pkgroll",
-    "dev": "tsx watch ./src/main.ts"
+    "dev": "nodemon --watch src --ext ts --exec 'tsx ./src/main.ts'",
+    "generate": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,10 @@
   "dependencies": {
     "@prisma/client": "^6.12.0",
     "@types/express": "^5.0.3",
-    "express": "^5.1.0"
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "@types/node": "^24.0.15",
