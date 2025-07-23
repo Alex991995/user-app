@@ -1,10 +1,22 @@
 {
   "compilerOptions": {
-     "noEmit": true, // Optional - see note below
-     "target": "esnext",
-     "module": "nodenext",
-     "rewriteRelativeImportExtensions": true,
-     "erasableSyntaxOnly": true,
-     "verbatimModuleSyntax": true
+    /* Базовые опции: */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    /* Строгость */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    /* Если транспилируете с TypeScript: */
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "outDir": "dist",
+    "sourceMap": true,
+    /* Если код не запускается в DOM DOM: */
+    "lib": ["es2022"]
   }
-} 
+}
