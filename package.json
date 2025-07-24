@@ -15,10 +15,13 @@
   "dependencies": {
     "@prisma/client": "^6.12.0",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.10",
+    "zod": "^4.0.8"
   },
   "devDependencies": {
     "@types/node": "^24.0.15",
