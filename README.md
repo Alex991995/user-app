@@ -1,3 +1,5 @@
+## The technologies sach as Node(Express.js), Docker ,TypeScript, PostqreSQL, ORM Prisma, Zod, Jsonwebtoken
+
 ### run command
 
 git clone git@github.com:Alex991995/user-app.git
