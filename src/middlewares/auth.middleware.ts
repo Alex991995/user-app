@@ -1,10 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-
-// import { jwtConstants } from '@/common/constants';
 import { HttpError } from '@/errors/http-error.js';
 import { AuthService } from '@/auth/auth.service.js';
-import { IToken } from '@/interface/index.js';
-// import { IResultPayload } from '@/types';
 
 export class AuthMiddleware {
   constructor(private authService: AuthService) {}

@@ -7,8 +7,11 @@ declare global {
     }
   }
 }
+export interface IAccess_token {
+  access_token: string;
+}
 
-export interface IToken {
+export interface IPayload {
   email: string;
   iat: number;
   exp: number;
