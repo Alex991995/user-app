@@ -1,4 +1,19 @@
-### To run a docker container
+### run command
+
+git clone git@github.com:Alex991995/user-app.git
+
+#### swith on dev branch
+
+### create .env with
+
+DATABASE_URL="postgresql://postgres:prisma@postgres:5432/postgres?schema=public"
+PORT=3000
+SECRET=frefgrefv
+SALT=10
+
+or set up your local enviroment
+
+## To run a docker container
 
 docker compose -f docker-compose.yml up --build
 
