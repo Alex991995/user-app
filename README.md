@@ -22,12 +22,12 @@ docker compose exec app npx prisma migrate dev --name init
 ### Routes
 
 - create user
-
-http://localhost:3000/user/create
+  POST
+  http://localhost:3000/user/create
 
 - login user
-
-http://localhost:3000/auth/login
+  POST
+  http://localhost:3000/auth/login
 
 requere email and password
 
@@ -36,16 +36,13 @@ requere email and password
 #### Please attache access token into Authorization Bearer
 
 - get the list of users
-
-http://localhost:3000/user
-please attache acces token into Authorization Bearer
+  GET
+  http://localhost:3000/user
 
 - block user's status
-
-PUT
-
-http://localhost:3000/user/:id
+  PUT
+  http://localhost:3000/user/:id
 
 - get a user by id
-
-http://localhost:3000/user/
+  GET
+  http://localhost:3000/user/:id
