@@ -7,3 +7,4 @@ export class HttpError extends Error {
 		this.context = context;
 	}
 }
+

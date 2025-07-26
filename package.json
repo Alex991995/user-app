@@ -4,9 +4,10 @@
   "main": "./dist/main.js",
   "type": "module",
   "scripts": {
-    "build": "pkgroll",
+    "start": "tsx watch src/main.ts",
+    "build": "tsc",
     "dev": "nodemon --watch src --ext ts --exec 'tsx ./src/main.ts'",
-    "generate": "npx prisma generate"
+    "db:deploy": "npx prisma migrate deploy && npx prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@prisma/client": "^6.12.0",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
+    "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@types/node": "^24.0.15",
     "pkgroll": "^2.14.3",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   }

@@ -1,48 +1,37 @@
 import { Request, Response, NextFunction } from 'express';
 
-
-
 // import { jwtConstants } from '@/common/constants';
-import { HttpError } from '@/errors/http-error';
+import { HttpError } from '@/errors/http-error.js';
+import { AuthService } from '@/auth/auth.service.js';
+import { IToken } from '@/interface/index.js';
 // import { IResultPayload } from '@/types';
 
 export class AuthMiddleware {
-  constructor(private logger: LoggerService) {}
+  constructor(private authService: AuthService) {}
 
   async execute(req: Request, res: Response, next: NextFunction) {
-    const [, , route, subRoute] = req.originalUrl.trim().split('/');
+    const token = req.headers.authorization?.split(' ')[1];
 
-    const cookies = req.headers.cookie?.replace(/\s/g, '').split(';');
+    const route = req.originalUrl;
 
-    const access_token = cookies?.find(item => item.startsWith('access_token'));
-    const token = access_token?.split('=')[1];
+    if (token) {
+      try {
+        const payload = await this.authService.verifyToken(token);
+        const user = await this.authService.findUser(payload.email);
+        if (user) {
+          req.user = user;
+        }
 
-     if (
-      route === 'auth' ||
-      (route === 'cookbook' && subRoute === 'most-popular') ||
-      (route === 'recipe' && subRoute === 'trend')
-    ) {
-      return next();
+        next();
+      } catch (error) {
+        next(new HttpError(401, 'invalid token'));
+      }
+    } else {
+      if (route === '/user/create' || route === '/auth/login') {
+        return next();
+      } else {
+        next(new HttpError(403, 'forbidden access'));
+      }
     }
-
-    if (!token) {
-      return next();
-    }
-
-    try {
-      const { email } = await this.decodeJWT(token);
-
-      req.userEmail = email;
-      return next();
-    } catch (err) {
-      console.log('err', err);
-      return next(new HttpError(401, 'Invalid Token'));
-    }
-  }
-
-  async decodeJWT(token: string): Promise<IResultPayload> {
-    const secret = new TextEncoder().encode(jwtConstants.secret);
-    const { payload } = await jose.jwtVerify(token, secret);
-    return payload as IResultPayload;
   }
 }

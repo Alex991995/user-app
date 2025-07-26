@@ -1,15 +1,29 @@
-# Ignore node_modules - it will be reinstalled in the container
+# Development artifacts
 node_modules
-
-# Ignore log files
+.git/
+.vscode/
 *.log
 
-# Ignore the dist directory - the code will be compiled inside the container
+coverage/
+.idea/
+*.md
+
+# Environment files
+.env*
+!.env.example
+docker-compose.yml
 dist
+# Build files
+**/*.tsbuildinfo
 
-# Ignore sensitive environment variables
-.env
+# Prisma
+/prisma/migrations
+/prisma/*.db
 
-# Ignore Docker-related files
-Dockerfile*
-.dockerignore
+# OS metadata
+.DS_Store
+
+.gitignore
+.git/
+
+Dockerfile
